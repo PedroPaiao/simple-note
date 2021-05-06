@@ -1,33 +1,39 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Fixed navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Casa <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+<mat-toolbar color="primary">
+    <div class="row w-100">
+      <div class="col-3 align-self-center">
+        <button (click)="changeDrawer()" mat-icon-button class="example-icon">
+          <mat-icon>menu</mat-icon>
+          <span style="font-size: 24px;" class="simple-title">Simple Note</span>
+        </button>
+      </div>
+      <div class="col-6 w-50">
+        <mat-form-field floatLabel="never" class="w-100">
+          <input matInput type="text" placeholder="Pesquisar tarefa..." [(ngModel)]="value" [ngModelOptions]="{standalone: true}">
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+</mat-toolbar>
+
+<mat-drawer-container autosize class="h-75">
+  <mat-drawer #drawer mode="side" [opened]="openDrawer">
+    <div class="pt-3" *ngFor="let option of optionsDrawer" (click)="reditectToPage(option.link)">
+      <mat-card class="custom-card">
+        {{ option.view }}
+      </mat-card>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</nav>
-
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-
-<div class="pencil" *ngIf="logged">
-  <a (click)="openDialog()" class="pencil-fab pencil-btn-large" id="pencilBtn">
-    <i class="fa fa-pencil" aria-hidden="true"></i>
-  </a>
-</div>
+  <div class="pencil" *ngIf="logged">
+    <a (click)="openDialog()" class="pencil-fab pencil-btn-large" id="pencilBtn">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </a>
+  </div>
+</mat-drawer-container>

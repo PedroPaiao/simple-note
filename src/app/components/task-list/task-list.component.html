@@ -6,7 +6,9 @@
     <div class="btn card p-0 collapsed task-header" data-toggle="collapse" [attr.data-target]="'#collapse' + index"
       aria-expanded="false" aria-controls="collapse">
       <div class="card-header d-flex justify-content-between" id="heading">
+        
         <h5 class="mb-0">
+          <span *ngIf="task.done">&#x2705;</span>
           {{task.name}}
         </h5>
         <p class="justify-self-end">{{task.deadline}}</p>
@@ -18,7 +20,7 @@
         <div class="card-body">
           {{task.description}}
         </div>
-        <button type="button" class="btn btn-success task-complete-btn">
+        <button type="button" [disabled]="task.done" class="btn btn-success task-complete-btn">
           <p>Completo</p>
         </button>
       </div>

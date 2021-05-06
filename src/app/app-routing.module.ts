@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { JumbletronDemonstrationComponent } from './components/jumbletron-demonstration/jumbletron-demonstration.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 const routes: Routes = [
-  { path: "", component: JumbletronDemonstrationComponent }
+  { path: ":list", component: TaskListComponent },
+  { path: "", component: TaskListComponent }
 ];
 
 @NgModule({

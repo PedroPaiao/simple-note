@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Casa <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -24,4 +24,10 @@
 
 <div class="container">
   <router-outlet></router-outlet>
+</div>
+
+<div class="pencil" *ngIf="logged">
+  <a (click)="openDialog()" class="pencil-fab pencil-btn-large" id="pencilBtn">
+    <i class="fa fa-pencil" aria-hidden="true"></i>
+  </a>
 </div>

@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+
+<ul *ngIf="tasks" class="task-list">
+  <li *ngFor="let task of tasks; let index = index" class="task">
+
+    <div class="btn card p-0 collapsed task-header" data-toggle="collapse" [attr.data-target]="'#collapse' + index"
+      aria-expanded="false" aria-controls="collapse">
+      <div class="card-header d-flex justify-content-between" id="heading">
+        <h5 class="mb-0">
+          {{task.name}}
+        </h5>
+        <p class="justify-self-end">{{task.deadline}}</p>
+      </div>
+    </div>
+
+    <div [attr.id]="'collapse'+index " class="collapse" aria-labelledby="heading">
+      <div class="d-flex">
+        <div class="card-body">
+          {{task.description}}
+        </div>
+        <button type="button" class="btn btn-success task-complete-btn">
+          <p>Completo</p>
+        </button>
+      </div>
+    </div>
+  </li>
+
+</ul>

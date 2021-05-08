@@ -1,0 +1,40 @@
+<mat-card class="w-50" style="margin-top: 25%; margin-left: 25%;">
+  <mat-card-content>
+    <div class="row justify-content-center">
+      <h1>
+        Simple note
+      </h1>
+    </div>
+    <div class="row justify-content-center">
+      <mat-form-field class="w-50 input-container-class">
+        <mat-label>Login</mat-label>
+        <input matInput type="text" [(ngModel)]="login" [ngModelOptions]="{standalone: true}">
+        <button mat-button *ngIf="login" matSuffix mat-icon-button aria-label="Clear" (click)="login=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="row justify-content-center">
+      <mat-form-field class="w-50 input-container-class">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+        <button mat-button *ngIf="password" matSuffix mat-icon-button aria-label="Clear" (click)="password=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="row justify-content-center">
+      <mat-form-field class="w-50 input-container-class">
+        <mat-label>Confirmar senha</mat-label>
+        <input matInput type="password" [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}">
+        <button mat-button *ngIf="confirmPassword" matSuffix mat-icon-button aria-label="Clear" (click)="confirmPassword=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="row justify-content-center">
+      <button mat-button (click)="navigateTo('notAllowed/entrar')">Voltar</button>
+      <button mat-raised-button (click)="navigateTo('/allowed/list')" class="enter-button">Regisrar</button>
+    </div>
+  </mat-card-content>
+</mat-card>

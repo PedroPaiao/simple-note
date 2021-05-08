@@ -23,12 +23,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
+import { CustomNavComponent } from './components/custom-nav/custom-nav.component';
+import { AllowedComponent } from './components/allowed/allowed.component';
+import { NotAllowedComponent } from './components/not-allowed/not-allowed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewTaskModalComponent,
-    TaskListComponent
+    TaskListComponent,
+    LoginModalComponent,
+    RegisterModalComponent,
+    CustomNavComponent,
+    AllowedComponent,
+    NotAllowedComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,8 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatCheckboxModule,
     MatSidenavModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

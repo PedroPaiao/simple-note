@@ -1,0 +1,43 @@
+<div class="h-100">
+  <mat-toolbar color="primary">
+    <div class="row w-100" >
+      <div class="col-3 align-self-center">
+        <button (click)="changeDrawer()" mat-icon-button class="example-icon">
+          <mat-icon>menu</mat-icon>
+          <span style="font-size: 24px;" class="simple-title">Simple Note</span>
+        </button>
+      </div>
+      <div class="col-6 w-50">
+        <mat-form-field floatLabel="never" class="w-100">
+          <input matInput type="text" placeholder="Pesquisar tarefa..." [(ngModel)]="value" [ngModelOptions]="{standalone: true}">
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-drawer-container autosize class="h-100">
+    <mat-drawer #drawer mode="side" [opened]="openDrawer">
+      <div class="pt-3" *ngFor="let option of optionsDrawer" (click)="reditectToPage(option.link)">
+        <mat-card class="custom-card">
+          {{ option.view }}
+        </mat-card>
+      </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content h-100">
+      <div class="container h-50">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <div class="pencil">
+      <a (click)="openDialog()" class="pencil-fab pencil-btn-large" id="pencilBtn">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </a>
+    </div>
+  </mat-drawer-container>
+</div>
+  

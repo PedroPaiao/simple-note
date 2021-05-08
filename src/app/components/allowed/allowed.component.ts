@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router, NavigationEnd  } from '@angular/router';
-import { NewTaskModalComponent } from './components/new-task-modal/new-task-modal.component';
-// import './mocks/login'
+import { Router } from '@angular/router';
+import { NewTaskModalComponent } from '../new-task-modal/new-task-modal.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-allowed',
+  templateUrl: './allowed.component.html',
+  styleUrls: ['./allowed.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AllowedComponent implements OnInit {
   title = 'simple-note-frontend';
   logged = true;
   closeResult = "";
@@ -39,14 +38,6 @@ export class AppComponent implements OnInit {
     } else {
       this.logged = true
     }
-    // this._route.events.filter()
-    // console.log()
-      // if(event == 'RoutesRecognized' ) {}    // this.logged = Login.getLogin();
-  }
-
-  doLogin() {
-    // console.log("banana 2")
-    // this.logged = true;
   }
 
   openDialog() {
@@ -62,12 +53,9 @@ export class AppComponent implements OnInit {
   }
 
   reditectToPage(option: string) {
-    // console.log(option)
-    let currentUrl = this._route.url;
     this._route.routeReuseStrategy.shouldReuseRoute = () => false;
     this._route.onSameUrlNavigation = 'reload';
-    // this._route.navigate([currentUrl]);
-    this._route.navigate(['/list'], {
+    this._route.navigate(['/allowed/list'], {
       queryParams: {
         list: option
       }

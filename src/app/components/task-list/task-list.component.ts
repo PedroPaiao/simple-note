@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {tasks as taskList } from '../../mocks/tasks'
 
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-task-list',
@@ -13,11 +14,13 @@ export class TaskListComponent implements OnInit {
   tasks: any;
   title: any;
   list: any = 'dsad';
-  currentDate: string = '2021-05-05'; // por praticidade
+  currentDate: string = "2021-05-09"; // por praticidade
+
   constructor(private _route:ActivatedRoute){}
   
   ngOnInit(): void {
-    this._route.paramMap.subscribe(params => { 
+    this._route.queryParamMap.subscribe(params => {
+      console.log(params) 
       if(params)
         this.list = params.get('list');
    });
@@ -40,7 +43,7 @@ export class TaskListComponent implements OnInit {
       break;
     case 'important':
       this.title = 'Tarefas Importantes';
-      this.tasks = taskList.filter((task: any) => task.tag === 'important');
+      this.tasks = taskList.filter((task: any) => task.tag === 'importante');
       break;
     default:
       this.title = 'Todas as Tarefas';
